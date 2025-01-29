@@ -18,7 +18,7 @@ nav {
     padding: 10px;
     justify-content: space-between;
     margin-bottom: 20px;
-    
+    border: thick silver ridge;
 }
 
 h1 {
@@ -51,6 +51,7 @@ main {
     background: rgb(1, 0, 0);
     display: flex;
     margin-top: 20px;
+    border: thick silver ridge
 }
 
 .sidebar {
@@ -60,6 +61,7 @@ main {
 
 .sidebar-img {
     width: 200px;
+    border: 4px silver ridge;
 }
 
 .content {
