@@ -29,6 +29,10 @@ h1 {
     margin: 0;
 }
 
+#name {
+  text-shadow:#969191
+}
+
 #nav-ul {
     list-style-type: none;
     margin: 0;
@@ -60,8 +64,9 @@ main {
 }
 
 .sidebar-img {
-    width: 200px;
+    width: 225px;
     border: 4px silver ridge;
+
 }
 
 .content {
