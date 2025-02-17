@@ -36,23 +36,30 @@ $(function () {
     createPlatform(430, 290, 75, 10, "darkblue");
     createPlatform(160, 300, 80, 10, "darkblue");
     createPlatform(160, 200, 20, 100, "darkblue");
+    createPlatform(830, 350, 75, 10, "darkblue");
+    createPlatform(830, 500, 75, 10, "darkblue");
+    createPlatform(1129, 500, 75, 10, "darkblue");
+    createPlatform(1129, 350, 75, 10, "darkblue");
+    createPlatform(980, 425, 75, 10, "darkblue");
     createPlatform(0, 125, 75, 10, "darkblue");
     createPlatform(350, 600, 20, 120, "darkblue");
     createPlatform(350, 600, 100, 20, "darkblue");
     createPlatform(250, 700, 100, 20, "darkblue");
     createPlatform(440, 730, 10, 1, "darkblue");
 
+
     //platforms on right side of wall
     createPlatform(600, 300, 75, 10, "darkblue");
 
     // TODO 3 - Create Collectables
-    //createCollectable("diamond", 1350, 50);
+    createCollectable("diamond", 870, 300);
+    createCollectable("diamond", 1170, 300);
     createCollectable("diamond", 430, 690);
     createCollectable("diamond", 0, 90);
 
     // TODO 4 - Create Cannons
     createCannon("top", 700, 150000, 5000, 200000, 290);
-    createCannon("top", 700, 180000, 5000, 200000, 290);
+    createCannon("top", 700, 150000, 5000, 200000, 290);
     createCannon("top", 525, 10000, 50, 20000, 20);
     createCannon("top", 875, 5000, 40, 20000, 200);
     createCannon("top", 975, 5000, 30, 20000, 200);
