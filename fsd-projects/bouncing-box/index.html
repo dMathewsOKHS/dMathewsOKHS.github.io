@@ -7,16 +7,20 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 200px;
-			height: 200px;
-			background-color:blue;
-			background-image: url(data:image/png;base64,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);
+			width: 205px;
+			height: 180px;
+			background-image: url(img/dvdimage.png);
+			background-color: rgba(0, 128, 90, 0.79);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
 			display: block;
 			position: absolute;
 			top: 100px;
+			color: white;
 			/* Change me! */
 			left: 0px;
 		}
@@ -25,6 +29,7 @@
 			height: 100vw 100vh;
 			background-color:black;
 		}
+		
 	</style>
 	
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -65,7 +70,7 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-			var boardHeight = jQuery(window).height(3);
+			var boardHeight = jQuery(window).height();
 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 20);
@@ -108,21 +113,21 @@
 				positionY = positionY + speedY;
 				
 				if (positionX > boardWidth) {
-					speed = speed * -1.25;
+					speed = speed * -1.1;
  				// Code to reverse speed goes here
 			}
 			
 				if (positionX < 0) {
-				speed = speed * -1.25;
+				speed = speed * -1.1;
 				}	
 				// Code to reverse speed goes here
 
 				if (positionY > boardHeight) {
-				speedY = speedY * -1;
+				speedY = speedY * -1.1;
 			}
 
 				if(positionY < 0){
-				speedY = speedY * -1;
+				speedY = speedY * -1.1;
 			}
 
 			
@@ -135,17 +140,10 @@
 			*/
 			function handleBoxClick() {
 				positionX = 0;
-				changeBoxText(points += 1);
-				speed += 0.5
-				points += 1
+				points = points + 1;
 				changeBoxText(points);
-
+				speed += 0.5
 			};
-
-
-
-
-
 		})();
 	</script>
 </body>
