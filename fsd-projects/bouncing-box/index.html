@@ -9,8 +9,8 @@
 		.box {
 			width: 205px;
 			height: 180px;
-			background-image: url(img/dvdimage.png);
-			background-color: rgba(0, 128, 90, 0.79);
+			background-image: url(//img/dvdimage.png);
+			background-color: rgba(0, 128, 90, 0.9);
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
@@ -71,13 +71,15 @@
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 			var boardHeight = jQuery(window).height();
-
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 20);
+			var interval = setInterval(update, 20);
 
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
-
+			board.on('click',handleMisClick);
+			if (good === false) {
+				box.off('click', handleBoxClick);
+			}
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
@@ -99,7 +101,17 @@
 			var speed = 1;
 			var positionY = 0.1;
 			var speedY = 1;
+			var randomNumber;
+       		var randomNumber2;
+        	var randomNumber3;
+			var randomNumber4;
+			var colorStr = "rgb(50, 25, 250)";
+			var good = true;
 
+			function endGame() {
+				clearInterval(interval);
+				good = false
+			}
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -111,6 +123,9 @@
 				moveBoxTo(positionX, positionY);
 				positionX = positionX + speed;
 				positionY = positionY + speedY;
+				randomNumber = Math.floor(Math.random()*255);
+          		randomNumber2 = Math.floor(Math.random()*255);
+          		randomNumber3 = Math.floor(Math.random()*255);
 				
 				if (positionX > boardWidth) {
 					speed = speed * -1.1;
@@ -126,10 +141,9 @@
 				speedY = speedY * -1.1;
 			}
 
-				if(positionY < 0){
+				if(positionY < 0) {
 				speedY = speedY * -1.1;
 			}
-
 			
 			};
 
@@ -138,13 +152,37 @@
 			it should increase the points total, increase the speed, and move the box to
 			the left side of the screen.
 			*/
+			function getRandomColor() {
+            colorStr = "rgb(" + randomNumber + ", " + randomNumber2 + ", " + randomNumber3 + ", " + "0.9" + ")";
+            box.css("background-color", colorStr);
+        }
+
 			function handleBoxClick() {
-				positionX = 0;
+				var randNumX = Math.random(0.1) * boardWidth;
+				var randNumY = Math.random(0.1) * boardHeight;
+				positionX = randNumX;
+				positionY = randNumY;
+				getRandomColor();
 				points = points + 1;
 				changeBoxText(points);
-				speed += 0.5
+				speed += 0.5;
+				if (points % 10 === 0) {
+					speed *= 0.9;
+					speedY *= 0.9;
+				}
 			};
-		})();
+			
+			
+			function handleMisClick() {
+				fails = fails + 1;
+				if (fails === 10) {
+					endGame();
+				}
+			}
+
+			}
+		
+		)();
 	</script>
 </body>
 
