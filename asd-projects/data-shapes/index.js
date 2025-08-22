@@ -38,7 +38,7 @@ $(document).ready(function () {
   var shape = {
     color: "blue",
     shape: "circle",
-    repeat: 3,
+    repeat: 3
   };
   dataShapes.push(shape);
   // TODO 2: add a new property to all data shapes
