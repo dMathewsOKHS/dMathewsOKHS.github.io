@@ -10,6 +10,10 @@
       <div id="die2"></div>
        <div id="roll">
        <button>Roll Dice</button>
+        <div id="sum">
+         <h1>Total:</h1>
+         <h1 id="total"></h1>
+        </div>
        </div>
     </div>
    <script src="dice.js"></script>
@@ -23,7 +27,6 @@
       .css("top", 50)
       .css("left", 50)
       .appendTo("#die");
-    $("#die").on("click", rollDie);
     function makeDot(top, left, elementID) {
       $('<div>')
         .appendTo(elementID)
@@ -35,12 +38,14 @@
       borderRadius: '50%',
       top: top + 'px',
       left: left + 'px'
-      });
-     
+      }); 
     }
+    var die1Value = 0;
+    var die2Value = 0;
     function rollDie() {
       $("#die").empty();
    var randomNum = Math.ceil(Math.random() * 6);
+      die1Value = randomNum;
    console.log(randomNum);
  if (randomNum === 1) {
     makeDot(45, 45, "#die"); // middle middle
@@ -57,7 +62,7 @@
       makeDot(20, 70, "#die"); // bottom left
       makeDot(70, 20, "#die"); // top right
   } else if (randomNum === 5) {
-      makeDot(20, 20, "#die"); // middle middle
+      makeDot(45, 45, "#die"); // middle middle
       makeDot(70, 70, "#die"); // bottom right
       makeDot(20, 20, "#die"); // top left
       makeDot(20, 70, "#die"); // bottom left
@@ -70,6 +75,7 @@
     makeDot(45, 70, '#die');
     makeDot(45, 20, '#die');
   }
+  return die1Value;
 }
 //Die2 starts here
  $("<div>")
@@ -80,28 +86,27 @@
       .css("top", 50)
       .css("left", 50)
       .appendTo("#die2");
-    $("#die2").on("click", rollDie2);
-
   function rollDie2() {
       $("#die2").empty();
-   var randomNum = Math.ceil(Math.random() * 6);
-   console.log(randomNum);
- if (randomNum === 1) {
+   var randomNum2 = Math.ceil(Math.random() * 6);
+      die2Value = randomNum2;
+   console.log(randomNum2);
+ if (randomNum2 === 1) {
     makeDot(45, 45, "#die2"); // middle middle
-  } else if (randomNum === 2) {
+  } else if (randomNum2 === 2) {
       makeDot(20, 20, "#die2"); // top left
       makeDot(70, 70, "#die2"); // bottom right
-  } else if (randomNum === 3) {
+  } else if (randomNum2 === 3) {
       makeDot(20, 20, "#die2"); // top left
       makeDot(70, 70, "#die2"); // bottom right
       makeDot(45, 45, "#die2"); // middle middle
-  } else if (randomNum === 4) {
+  } else if (randomNum2 === 4) {
       makeDot(70, 70, "#die2"); // bottom right
       makeDot(20, 20, "#die2"); // top left
       makeDot(20, 70, "#die2"); // bottom left
       makeDot(70, 20, "#die2"); // top right
-  } else if (randomNum === 5) {
-      makeDot(20, 20, "#die2"); // middle middle
+  } else if (randomNum2 === 5) {
+      makeDot(45, 45, "#die2"); // middle middle
       makeDot(70, 70, "#die2"); // bottom right
       makeDot(20, 20, "#die2"); // top left
       makeDot(20, 70, "#die2"); // bottom left
@@ -114,11 +119,25 @@
     makeDot(45, 70, '#die2');
     makeDot(45, 20, '#die2');
   }
+  return die2Value;
 }  
-function bothDice() {
+ function total() {
+  $('#total').text(die1Value + die2Value);
+ }
+ function bothDice() {
   rollDie();
   rollDie2();
+  total();
 }
-$('button').on('click', bothDice);
+ $("#die").on("click", function() {
+  rollDie();
+  total();
+});
+$("#die2").on("click", function() {
+  rollDie2();
+  total();
+});
+ $('button').on('click', bothDice);
+
   </script>
 </html>
