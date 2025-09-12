@@ -1,0 +1,21 @@
+#die {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(219, 13, 13); /* Feel free to customize */
+  position: relative;
+  top: 25px;
+}
+#die2 {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(219, 13, 13); /* Feel free to customize */
+  position: relative;
+  left: 100px;
+  top:25px;
+}
+button {
+  position: absolute;
+  border: inline;
+  top: 175px;
+  color: blue;
+}

@@ -14,7 +14,10 @@ var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 
 // TODO 4, Part 1: Create the apple variable
-
+const apple = {};
+function makeApple() {
+  
+}
 
 // TODO 5, Part 1: Create the snake variable
 
