@@ -228,15 +228,16 @@ function hasCollidedWithSnake() {
     HINT: Each part of the snake's body is stored in the snake.body Array. The
     head and each part of the snake's body also knows its own row and column.
   */
-for (var j = snake.body.length; j > 0; j--){
-  if (snake.head.row === snake.body[j]) {
-    if (snake.head.column === snake.body[j]) {
-    return true;
-  } else {
-  return false;
- }
-}
-}
+ debugger;
+  for (var j = snake.body.length - 1; j > 0; j--) {
+    if (snake.head.row === snake.body[j].row) {
+      if (snake.head.column === snake.body[j].column) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 }
 function endGame() {
   // stop update function from running
@@ -362,7 +363,7 @@ function getRandomAvailablePosition() {
   while (!spaceIsAvailable) {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
-    spaceIsAvailable = true;
+    if()
 
     /*
       TODO 14: After generating the random position determine if that position is
