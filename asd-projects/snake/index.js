@@ -71,17 +71,17 @@ updateInterval = setInterval(update, 70);
  */
 function update() {
   // TODO 6, Part 2: Fill in the update function's code block
-if (started) {
-  moveSnake();
-}
+  if (started) {
+    moveSnake();
+  }
 
-if (hasHitWall() || hasCollidedWithSnake()) {
-  endGame();
-}
+  if (hasHitWall() || hasCollidedWithSnake()) {
+    endGame();
+  }
 
-if (hasCollidedWithApple()) {
-  handleAppleCollision();
-}
+  if (hasCollidedWithApple()) {
+    handleAppleCollision();
+  }
 
 
 
@@ -134,24 +134,24 @@ function moveSnake() {
     HINT: The snake's head will need to move forward 1 square based on the value
     of snake.head.direction which may be one of "left", "right", "up", or "down"
   */
- if (snake.head.direction === "left") {
-  snake.head.column = snake.head.column - 1;
-} else if (snake.head.direction === "right") {
-  snake.head.column = snake.head.column + 1;
-} else if (snake.head.direction === "down") {
-  snake.head.row = snake.head.row + 1;
-} else if (snake.head.direction === "up") {
-  snake.head.row = snake.head.row - 1;
-}
-if (activeKey === KEY.LEFT) {
-  snake.head.direction = "left";
-} else if (activeKey === KEY.UP) {
-  snake.head.direction = "up";
-} else if (activeKey === KEY.DOWN) {
-  snake.head.direction = "down";
-} else if (activeKey === KEY.RIGHT) {
-  snake.head.direction = "right";
-}
+  if (snake.head.direction === "left") {
+    snake.head.column = snake.head.column - 1;
+  } else if (snake.head.direction === "right") {
+    snake.head.column = snake.head.column + 1;
+  } else if (snake.head.direction === "down") {
+    snake.head.row = snake.head.row + 1;
+  } else if (snake.head.direction === "up") {
+    snake.head.row = snake.head.row - 1;
+  }
+  if (activeKey === KEY.LEFT) {
+    snake.head.direction = "left";
+  } else if (activeKey === KEY.UP) {
+    snake.head.direction = "up";
+  } else if (activeKey === KEY.DOWN) {
+    snake.head.direction = "down";
+  } else if (activeKey === KEY.RIGHT) {
+    snake.head.direction = "right";
+  }
 
 
 repositionSquare(snake.head);
@@ -356,36 +356,36 @@ function repositionSquare(square) {
 /* Returns a (row,column) Object that is not occupied by another game component
  */
 function getRandomAvailablePosition() {
-  var spaceIsAvailable;
-  var randomPosition = {};
+    var spaceIsAvailable;
+    var randomPosition = {};
 
-  /* Generate random positions until one is found that doesn't overlap with the snake */
-  while (!spaceIsAvailable) {
-    randomPosition.column = Math.floor(Math.random() * COLUMNS);
-    randomPosition.row = Math.floor(Math.random() * ROWS);
-    spaceIsAvailable = true;
-    for (var i = 0; i < snake.body.length - 1; i++) {
-     var segment = snake.body[i];
-      if(segment.row === randomPosition.row) {
-        if(segment.column === randomPosition.column) {
-          spaceIsAvailable = false;
-        } else {
-          spaceIsAvailable = true;
+    /* Generate random positions until one is found that doesn't overlap with the snake */
+    while (!spaceIsAvailable) {
+      randomPosition.column = Math.floor(Math.random() * COLUMNS);
+      randomPosition.row = Math.floor(Math.random() * ROWS);
+      spaceIsAvailable = true;
+      for (var i = 0; i < snake.body.length - 1; i++) {
+      var segment = snake.body[i];
+        if(segment.row === randomPosition.row) {
+          if(segment.column === randomPosition.column) {
+            spaceIsAvailable = false;
+          } else {
+            spaceIsAvailable = true;
+          }
         }
-      }
-    //set spaceIsAvailable to true
-    /*
-      TODO 14: After generating the random position determine if that position is
-      not occupied by a snakeSquare in the snake's body. If it is then set 
-      spaceIsAvailable to false so that a new position is generated.
-    */
-  }
-    if(spaceIsAvailable === false) {
-      getRandomAvailablePosition();
+      //set spaceIsAvailable to true
+      /*
+        TODO 14: After generating the random position determine if that position is
+        not occupied by a snakeSquare in the snake's body. If it is then set 
+        spaceIsAvailable to false so that a new position is generated.
+      */
     }
-  return randomPosition;
+      if(spaceIsAvailable === false) {
+        getRandomAvailablePosition();
+      }
+    return randomPosition;
+  }
 }
-
 function calculateHighScore() {
   // retrieve the high score from session storage if it exists, or set it to 0
   var highScore = sessionStorage.getItem("highScore") || 0;
