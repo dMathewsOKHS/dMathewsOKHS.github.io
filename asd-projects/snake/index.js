@@ -224,12 +224,11 @@ function hasCollidedWithSnake() {
     if (snake.head.row === snake.body[j].row) {
       if (snake.head.column === snake.body[j].column) {
         return true;
-      } else {
-        return false;
+       } 
       }
     }
+    return false;
   }
-}
 function endGame() {
   // stop update function from running
   clearInterval(updateInterval);
@@ -261,7 +260,6 @@ function makeApple() {
 
   // get a random available row/column on the board
   var randomPosition = getRandomAvailablePosition();
-
   // initialize the row/column properties on the Apple Object
   apple.row = randomPosition.row;
   apple.column = randomPosition.column;
