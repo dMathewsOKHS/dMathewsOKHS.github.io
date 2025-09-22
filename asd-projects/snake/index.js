@@ -363,7 +363,7 @@ function getRandomAvailablePosition() {
       randomPosition.column = Math.floor(Math.random() * COLUMNS);
       randomPosition.row = Math.floor(Math.random() * ROWS);
       spaceIsAvailable = true;
-      for (var i = 0; i < snake.body.length - 1; i++) {
+      for (var i = 0; i < snake.body.length; i++) {
       var segment = snake.body[i];
         if(segment.row === randomPosition.row) {
           if(segment.column === randomPosition.column) {
