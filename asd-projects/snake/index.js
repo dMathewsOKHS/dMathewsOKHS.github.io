@@ -150,7 +150,7 @@ function moveSnake() {
     snake.head.row = snake.head.row - 1;
   }
   
-repositionSquare(snake.head);
+  repositionSquare(snake.head);
 }
 
 // TODO 9: Create a new helper function
@@ -354,12 +354,10 @@ function getRandomAvailablePosition() {
       randomPosition.row = Math.floor(Math.random() * ROWS);
       spaceIsAvailable = true;
       for (var i = 0; i < snake.body.length; i++) {
-      var segment = snake.body[i];
+       var segment = snake.body[i];
         if(segment.row === randomPosition.row) {
           if(segment.column === randomPosition.column) {
             spaceIsAvailable = false;
-          } else {
-            spaceIsAvailable = true;
           }
         }
       //set spaceIsAvailable to true
@@ -386,4 +384,10 @@ function calculateHighScore() {
   }
 
   return highScore;
+}
+if(score <= 3) {
+  $('body').css('background-color', 'dark-green');
+} 
+if(score > 3) {
+  $('body').css('background-color', 'blue');
 }
