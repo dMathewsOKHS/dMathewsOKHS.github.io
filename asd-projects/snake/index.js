@@ -228,7 +228,6 @@ function hasCollidedWithSnake() {
     HINT: Each part of the snake's body is stored in the snake.body Array. The
     head and each part of the snake's body also knows its own row and column.
   */
- debugger;
   for (var j = snake.body.length - 1; j > 0; j--) {
     if (snake.head.row === snake.body[j].row) {
       if (snake.head.column === snake.body[j].column) {
@@ -264,19 +263,19 @@ function endGame() {
  * position on the board that is not occupied and position the apple there.
  */
 function makeApple() {
-  // TODO 4, Part 2: Fill in this function's code block
-// make the apple jQuery Object and append it to the board
-apple.element = $("<div>").addClass("apple").appendTo(board);
+    // TODO 4, Part 2: Fill in this function's code block
+  // make the apple jQuery Object and append it to the board
+  apple.element = $("<div>").addClass("apple").appendTo(board);
 
-// get a random available row/column on the board
-var randomPosition = getRandomAvailablePosition();
+  // get a random available row/column on the board
+  var randomPosition = getRandomAvailablePosition();
 
-// initialize the row/column properties on the Apple Object
-apple.row = randomPosition.row;
-apple.column = randomPosition.column;
+  // initialize the row/column properties on the Apple Object
+  apple.row = randomPosition.row;
+  apple.column = randomPosition.column;
 
-// position the apple on the screen
-repositionSquare(apple);
+  // position the apple on the screen
+  repositionSquare(apple);
 }
 
 /* Create an HTML element for a snakeSquare using jQuery. Then, given a row and
@@ -284,23 +283,23 @@ repositionSquare(apple);
  * snakeSquare to the snake.body Array and set a new tail.
  */
 function makeSnakeSquare(row, column) {
-  // TODO 5, Part 2: Fill in this function's code block
-// initialize a new snakeSquare Object
-const snakeSquare = {};
+    // TODO 5, Part 2: Fill in this function's code block
+  // initialize a new snakeSquare Object
+  const snakeSquare = {};
 
-// make the snakeSquare element and add it to the board
-snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
+  // make the snakeSquare element and add it to the board
+  snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
 
-// assign the row and column position
-snakeSquare.row = row;
-snakeSquare.column = column;
+  // assign the row and column position
+  snakeSquare.row = row;
+  snakeSquare.column = column;
 
-// set the snake’s position visually
-repositionSquare(snakeSquare);
+  // set the snake’s position visually
+  repositionSquare(snakeSquare);
 
-// if this is the head, give it a unique ID
-if (snake.body.length === 0) {
-  snakeSquare.element.attr("id", "snake-head");
+  // if this is the head, give it a unique ID
+  if (snake.body.length === 0) {
+    snakeSquare.element.attr("id", "snake-head");
 }
 
 // add the square to the snake’s body and update the tail
