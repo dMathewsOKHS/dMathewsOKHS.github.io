@@ -47,17 +47,17 @@ init();
 
 function init() {
   // TODO 5, Part 3: initialize the snake
-snake.body = [];
-makeSnakeSquare(10, 10);
-makeSnakeSquare(10, 9);
-makeSnakeSquare(10, 8);
-snake.head = snake.body[0];
-  
-  // TODO 4, Part 3: initialize the apple
-makeApple();
+  snake.body = [];
+  makeSnakeSquare(10, 10);
+  makeSnakeSquare(10, 9);
+  makeSnakeSquare(10, 8);
+  snake.head = snake.body[0];
+    
+    // TODO 4, Part 3: initialize the apple
+  makeApple();
 
-  // TODO 6, Part 1: Initialize the interval
-updateInterval = setInterval(update, 70);
+    // TODO 6, Part 1: Initialize the interval
+  updateInterval = setInterval(update, 70);
 
 }
 
@@ -95,8 +95,14 @@ function checkForNewDirection(event) {
   perpendicular to the current direction
   */
 
-  if (activeKey === KEY.LEFT) {
+   if (activeKey === KEY.LEFT) {
     snake.head.direction = "left";
+  } else if (activeKey === KEY.UP) {
+    snake.head.direction = "up";
+  } else if (activeKey === KEY.DOWN) {
+    snake.head.direction = "down";
+  } else if (activeKey === KEY.RIGHT) {
+    snake.head.direction = "right";
   }
 
   // FILL IN THE REST
@@ -143,17 +149,7 @@ function moveSnake() {
   } else if (snake.head.direction === "up") {
     snake.head.row = snake.head.row - 1;
   }
-  if (activeKey === KEY.LEFT) {
-    snake.head.direction = "left";
-  } else if (activeKey === KEY.UP) {
-    snake.head.direction = "up";
-  } else if (activeKey === KEY.DOWN) {
-    snake.head.direction = "down";
-  } else if (activeKey === KEY.RIGHT) {
-    snake.head.direction = "right";
-  }
-
-
+  
 repositionSquare(snake.head);
 }
 
@@ -172,37 +168,33 @@ function hasHitWall() {
     
     HINT: What will the row and column of the snake's head be if this were the case?
   */
-if (snake.head.row > ROWS) {
-  return true;
-} else if (snake.head.column > COLUMNS) {
-  return true;
-} else if (snake.head.row < 0) {
-  return true;
-} else if (snake.head.column < 0) {
-  return true;
-} else {
-  return false;
-}
-
-
-
-  return false;
+  if (snake.head.row > ROWS) {
+    return true;
+  } else if (snake.head.column > COLUMNS) {
+    return true;
+  } else if (snake.head.row < 0) {
+    return true;
+  } else if (snake.head.column < 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function hasCollidedWithApple() {
   /* 
-    TODO 12: Should return true if the snake's head has collided with the apple, 
-    false otherwise
-    
-    HINT: Both the apple and the snake's head are aware of their own row and column
-  */
-if (snake.head.row === apple.row) {
-  if (snake.head.column === apple.column) {
-    return true;
+      TODO 12: Should return true if the snake's head has collided with the apple, 
+      false otherwise
+      
+      HINT: Both the apple and the snake's head are aware of their own row and column
+    */
+  if (snake.head.row === apple.row) {
+    if (snake.head.column === apple.column) {
+      return true;
+    }
+  } else {
+    return false;
   }
-} else {
-  return false;
-}
 }
 
 function handleAppleCollision() {
@@ -323,8 +315,8 @@ snake.tail = snakeSquare;
 */
 function handleKeyDown(event) {
   // TODO 7: make the handleKeyDown function register which key is pressed
-activeKey = event.which;
-console.log(activeKey);
+  activeKey = event.which;
+  console.log(activeKey);
 
   // If a valid direction key is pressed, start the game
   if (
