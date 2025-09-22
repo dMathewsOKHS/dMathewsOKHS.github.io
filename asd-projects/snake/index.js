@@ -172,9 +172,9 @@ function hasHitWall() {
     
     HINT: What will the row and column of the snake's head be if this were the case?
   */
-if (snake.head.row > ROWS - 1) {
+if (snake.head.row > ROWS) {
   return true;
-} else if (snake.head.column > COLUMNS - 1) {
+} else if (snake.head.column > COLUMNS) {
   return true;
 } else if (snake.head.row < 0) {
   return true;
