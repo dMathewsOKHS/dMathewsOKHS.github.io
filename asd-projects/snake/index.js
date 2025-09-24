@@ -208,7 +208,7 @@ function handleAppleCollision() {
 
   var row = snake.tail.row;
   var column = snake.tail.column;
-  
+  checkScoreChangeCSS(score);
   makeSnakeSquare(row, column);
 }
 
@@ -385,9 +385,9 @@ function calculateHighScore() {
 
   return highScore;
 }
-if(score <= 3) {
-  $('body').css('background-color', 'dark-green');
-} 
-if(score > 3) {
-  $('body').css('background-color', 'blue');
+function checkScoreChangeCSS(score) {
+(score % 10 === 0) ? $("body").css('background-color', "blue")
+: (score > 5) ? $("body").css('background-color', "red")
+: $("body").css('background-color', "dark-green");
 }
+
