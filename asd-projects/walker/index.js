@@ -111,8 +111,8 @@ function runProgram() {
   }
   //Checks if walker is reaching boundaries of the board
   function wallCollision() {
-    if (walker.width > board.width) { // right wall
-      walker.x = board.width;
+    if (walker.x + walker.width > board.width) { // right wall
+      walker.x = board.width - walker.width;
     } 
     if (walker.x < board.leftWall) { // left wall
       walker.x = board.leftWall;
