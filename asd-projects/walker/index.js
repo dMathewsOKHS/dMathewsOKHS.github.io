@@ -15,9 +15,8 @@ function runProgram() {
     UP: 38,
     RIGHT: 39,
     DOWN: 40,
-  }
+  };
   // Game Item Objects
-  
   var walker = {
     x: 0,
     y: 0,
@@ -25,13 +24,14 @@ function runProgram() {
     speedY: 0,
     width: 50,
     height: 50,
-  }
+  };
+  
   var board = {
     width: $("#board").width(),
     height: 390,
     top: 0,
     leftWall: 0,
-  }
+  };
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
 
@@ -51,11 +51,12 @@ function runProgram() {
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
+ //Helps constant update
   function newFrame() {
     repositionGameItem();
     wallCollision();
     redrawGameItem();
-  };
+  }
   
   /* 
   This section is where you set up the event handlers for user input.
@@ -63,18 +64,20 @@ function runProgram() {
   
   Note: You can have multiple event handlers for different types of events.
   */
+  //Handles key down
   function handleKeyDown(event) {
     console.log(event.which);
     if (event.which === KEY.LEFT) {
-      walker.speedX += -5;
+      walker.speedX = -5;
     } else if (event.which === KEY.UP) {
-      walker.speedY += -5;
+      walker.speedY = -5;
     } else if (event.which === KEY.RIGHT) {
-      walker.speedX += 5;
+      walker.speedX = 5;
     } else if (event.which === KEY.DOWN) {
-      walker.speedY += 5;
+      walker.speedY = 5;
     }
   }
+  //Handles key up
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = 0;
@@ -96,23 +99,29 @@ function runProgram() {
     // turn off event handlers
     $(document).off();
   }
+  //Updates walker's position
   function repositionGameItem() {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
   }
+ //Changes css of walker
   function redrawGameItem() {
     $("#walker").css('left', walker.x)
                 .css('top', walker.y);
   }
+  //Checks if walker is reaching boundaries of the board
   function wallCollision() {
-    if ( walker.x + walker.width > board.width) { // right wall
-      walker.speedX = -5;
-    } else if (walker.x < board.leftWall) { // left wall
-      walker.speedX = 5;
-    } else if (walker.y < board.top) {// top wall
-      walker.speedY = 5;
-    } else if (walker.y > board.height) { // bottom wall
-      walker.speedY = -5;
+    if (walker.width > board.width) { // right wall
+      walker.x = board.width;
+    } 
+    if (walker.x < board.leftWall) { // left wall
+      walker.x = board.leftWall;
+    } 
+    if (walker.y < board.top) {// top wall
+      walker.y = board.top;
+    } 
+    if (walker.y > board.height) { // bottom wall
+      walker.y = board.height;
     }
   }
 }
