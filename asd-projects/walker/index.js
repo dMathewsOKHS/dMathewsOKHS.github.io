@@ -16,14 +16,15 @@ function runProgram() {
     RIGHT: 39,
     DOWN: 40,
   };
+ 
   // Game Item Objects
   var walker = {
     x: 0,
     y: 0,
     speedX: 0,
     speedY: 0,
-    width: 50,
-    height: 50,
+    width: parseInt($("#walker").width()),
+    height: parseInt($("#walker").height()),
   };
   
   var board = {
@@ -32,6 +33,7 @@ function runProgram() {
     top: 0,
     leftWall: 0,
   };
+  
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
 
@@ -51,7 +53,8 @@ function runProgram() {
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
- //Helps constant update
+ 
+  //Helps constant update
   function newFrame() {
     repositionGameItem();
     wallCollision();
@@ -64,6 +67,7 @@ function runProgram() {
   
   Note: You can have multiple event handlers for different types of events.
   */
+ 
   //Handles key down
   function handleKeyDown(event) {
     console.log(event.which);
@@ -77,6 +81,7 @@ function runProgram() {
       walker.speedY = 5;
     }
   }
+  
   //Handles key up
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
@@ -92,6 +97,8 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+  
+  //Ends game
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -99,16 +106,19 @@ function runProgram() {
     // turn off event handlers
     $(document).off();
   }
+  
   //Updates walker's position
   function repositionGameItem() {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
   }
- //Changes css of walker
+ 
+  //Changes css of walker
   function redrawGameItem() {
     $("#walker").css('left', walker.x)
                 .css('top', walker.y);
   }
+  
   //Checks if walker is reaching boundaries of the board
   function wallCollision() {
     if (walker.x + walker.width > board.width) { // right wall
