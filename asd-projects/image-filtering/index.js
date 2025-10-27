@@ -51,6 +51,7 @@ function applyFilter(filterFunction) {
 }
 
 // TODO 9 Create the applyFilterNoBackground function
+//Applies a filter without changing the background
 function applyFilterNoBackground(filterFunction) {
   var backgroundColor = image[0][0];
   for (var r = 0; r < image.length; r++) {
