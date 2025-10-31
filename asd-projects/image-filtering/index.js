@@ -51,6 +51,7 @@ function applyFilter(filterFunction) {
 }
 
 // TODO 9 Create the applyFilterNoBackground function
+
 //Applies a filter without changing the background
 function applyFilterNoBackground(filterFunction) {
   var backgroundColor = image[0][0];
@@ -71,31 +72,27 @@ function applyFilterNoBackground(filterFunction) {
 // TODO 6: Create the keepInBounds function
 //Keeps the color value within 255
 function keepInBounds(x) {
-  if (x < 0) {
-    return 0;
-  } else if (x > 255) {
-    return 255;
-  } else {
-    return x;
-  }
+ return x < 0 ? 0 : (x > 255 ? 255 : x);
 }
+
 // TODO 4: Create reddify filter function
-//Increased red filter
+//Increasing red color by 200 filter
 function reddify(pixelArray) {
-  pixelArray[0] += 200;
+  pixelArray[RED] += 200;
+  pixelArray[RED] = keepInBounds(pixelArray[RED]);
 }
 
 // TODO 7 & 8: Create more filter functions
-//Decreasing Blue Filter
+//Decreasing Blue color by 50 Filter
 function decreaseBlue(pixelArray) {
-  pixelArray[2] -= 50;
-  pixelArray[2] = keepInBounds(pixelArray[2]);
+  pixelArray[BLUE] -= 50;
+  pixelArray[BLUE] = keepInBounds(pixelArray[BLUE]);
 }
 
-//Increasing green filter
+//Increasing green by blue value filter
 function increaseGreenByBlue(pixelArray) {
-  pixelArray[1] += pixelArray[2];
-  pixelArray[1] = keepInBounds(pixelArray[1]);
+  pixelArray[GREEN] += pixelArray[BLUE];
+  pixelArray[GREEN] = keepInBounds(pixelArray[GREEN]);
 }
 
 //Challenge code goes below here
