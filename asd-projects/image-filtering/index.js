@@ -76,10 +76,9 @@ function keepInBounds(x) {
 }
 
 // TODO 4: Create reddify filter function
-//Increasing red color by 200 filter
+//Make red color 200 filter
 function reddify(pixelArray) {
-  pixelArray[RED] += 200;
-  pixelArray[RED] = keepInBounds(pixelArray[RED]);
+  pixelArray[RED] = 200;
 }
 
 // TODO 7 & 8: Create more filter functions
